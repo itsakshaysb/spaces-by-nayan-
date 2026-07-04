@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaces by Nayan — Interior Design Studio, Mumbai</title>
+  <meta name="description" content="Mumbai interior design studio. Personal, practical, and timeless interiors, designed around how you live.">
+  <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    // Set motion class before paint to avoid flash of hidden content
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        document.documentElement.classList.add('js-motion');
+        if (!sessionStorage.getItem('sbn-loaded')) {
+          document.documentElement.classList.add('is-loading');
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader-meta">
+      <span class="label label--stone">Interior design studio · Mumbai</span>
+      <span class="loader-counter label">Loading 0%</span>
+    </div>
+    <div class="loader-wordmark">Spaces by Nayan</div>
+  </div>
+
+  <!-- Page transition veil -->
+  <div class="veil" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" aria-hidden="true"><span class="cursor-label">View</span></div>
+
+  <header class="nav">
+    <a class="nav-wordmark u-line" href="index.html">Spaces by Nayan</a>
+    <nav class="nav-links" aria-label="Main">
+      <a class="u-line" href="#work">Work</a>
+      <a class="u-line" href="#approach">Approach</a>
+      <a class="u-line" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero container">
+      <h1 class="hero-thesis" data-split>Interiors shaped by how you live&nbsp;— intimate, practical, timeless.</h1>
+      <div class="hero-stamp">
+        <p class="label" data-reveal>Interior design studio · Mumbai</p>
+        <p class="label label--stone" data-reveal>[&nbsp;Scroll down&nbsp;]</p>
+      </div>
+      <figure class="hero-media frame frame--wide" data-hero-media data-parallax>
+        <picture>
+          <source type="image/webp"
+            srcset="assets/images/living-1-800.webp 800w, assets/images/living-1-1400.webp 1400w, assets/images/living-1-2000.webp 2000w"
+            sizes="100vw">
+          <img src="assets/images/living-1-1400.jpg"
+            alt="Living room with a curved bouclé sofa, striped armchairs, and a round walnut coffee table in soft daylight"
+            fetchpriority="high">
+        </picture>
+      </figure>
+    </section>
+
+    <!-- Intro -->
+    <section class="section container">
+      <p class="intro-text" data-split>Spaces by Nayan is a Mumbai interior design studio. Every space is designed around the person who lives in it — personal and intimate, shaped by the way you actually use a home.</p>
+      <p class="measure" style="margin-top: 1.75rem; color: var(--ink-soft);" data-reveal>The result is practical and comfortable to live in, and quietly timeless: interiors that feel right on the first day and still feel right years later.</p>
+    </section>
+
+    <!-- Approach -->
+    <section class="section container" id="approach">
+      <div class="eyebrow" data-reveal>
+        <span class="label eyebrow-num">01</span>
+        <span class="label">Approach</span>
+      </div>
+      <div class="approach-grid">
+        <div>
+          <h2 class="opener" data-split>Designed around you.</h2>
+          <p class="measure" style="margin-top: 1.75rem; color: var(--ink-soft);" data-reveal>Good design starts with the client, not the trend. Nayan works closely with each person to understand how they live, then shapes a space that feels personal and intimate — never a showpiece you're afraid to touch. Every choice is made to be practical and comfortable for everyday life, and to stay timeless, so the space grows with you instead of dating.</p>
+          <ol class="principles" data-reveal>
+            <li><span class="num">01</span><span class="principle">Personal &amp; intimate</span></li>
+            <li><span class="num">02</span><span class="principle">Practical &amp; comfortable</span></li>
+            <li><span class="num">03</span><span class="principle">Made to last</span></li>
+          </ol>
+        </div>
+        <div class="approach-portrait">
+          <figure class="frame frame--tall" data-parallax>
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/nayan-800.webp 800w, assets/images/nayan-1400.webp 1400w, assets/images/nayan-2000.webp 2000w"
+                sizes="(max-width: 900px) 100vw, 45vw">
+              <img src="assets/images/nayan-1400.jpg"
+                alt="Nayan, founder of Spaces by Nayan, standing at a light-oak study desk she designed"
+                loading="lazy">
+            </picture>
+          </figure>
+          <p class="label label--stone" style="margin-top: 0.9rem;" data-reveal>Nayan — Founder</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section container" id="services">
+      <div class="eyebrow" data-reveal>
+        <span class="label eyebrow-num">02</span>
+        <span class="label">Services</span>
+      </div>
+      <ul class="services-list">
+        <li class="service" data-reveal>
+          <h3>Full Interior Design</h3>
+          <p>Concept to completion: space planning, materials, joinery, lighting, and styling, managed end to end.</p>
+        </li>
+        <li class="service" data-reveal>
+          <h3>Design Consultation</h3>
+          <p>A focused session for a single room or a second opinion — clear direction you can act on, without a full engagement.</p>
+        </li>
+        <li class="service" data-reveal>
+          <h3>Renovation &amp; Space Planning</h3>
+          <p>Rethinking how a space works before anything is bought — layout, flow, and light.</p>
+        </li>
+        <li class="service" data-reveal>
+          <h3>Styling</h3>
+          <p>The final layer: furniture, textiles, and objects that make a finished space feel lived in.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Featured project -->
+    <section class="section container" id="work">
+      <div class="eyebrow" data-reveal>
+        <span class="label eyebrow-num">03</span>
+        <span class="label">Selected work</span>
+      </div>
+      <div class="teaser">
+        <a class="teaser-media" href="project.html" data-cursor="view" data-transition aria-label="View project: A Mumbai Apartment">
+          <figure class="frame frame--tall">
+            <picture>
+              <source type="image/webp"
+                srcset="assets/images/dining-3-800.webp 800w, assets/images/dining-3-1400.webp 1400w, assets/images/dining-3-2000.webp 2000w"
+                sizes="(max-width: 900px) 100vw, 50vw">
+              <img src="assets/images/dining-3-1400.jpg"
+                alt="Dining room seen through open fluted-glass pocket doors, pedestal table and chandelier beyond"
+                loading="lazy">
+            </picture>
+          </figure>
+        </a>
+        <div>
+          <p class="label label--stone" data-reveal>[ 01 ]</p>
+          <h2 class="teaser-title" data-split>A Mumbai Apartment</h2>
+          <p class="label" data-reveal>Apartment · Mumbai</p>
+          <a class="teaser-link u-line" href="project.html" data-transition data-reveal>View project →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section container" id="contact">
+      <div class="eyebrow" data-reveal>
+        <span class="label eyebrow-num">04</span>
+        <span class="label">Contact</span>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-heading" data-split>Have a space in&nbsp;mind?</h2>
+          <p class="contact-sub" data-reveal>Tell us a little about the project and we'll be in touch.</p>
+          <div class="contact-aside" data-reveal>
+            <a class="u-line" href="mailto:hello@spacesbynayan.com">hello@spacesbynayan.com</a>
+            <a class="u-line" href="https://instagram.com/spacesbynayan" target="_blank" rel="noopener">@spacesbynayan</a>
+            <p class="label label--stone">Working across Mumbai</p>
+          </div>
+        </div>
+        <form class="contact-form" novalidate data-reveal>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <span class="error-msg">Please add your name.</span>
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="error-msg">Please add a valid email so we can reply.</span>
+          </div>
+          <div class="field">
+            <label for="f-type">Project type</label>
+            <select id="f-type" name="project_type" required>
+              <option value="" selected>Select…</option>
+              <option>Home</option>
+              <option>Apartment</option>
+              <option>Commercial</option>
+              <option>Other</option>
+            </select>
+            <span class="error-msg">Please choose a project type.</span>
+          </div>
+          <div class="field">
+            <label for="f-message">Message</label>
+            <textarea id="f-message" name="message" required></textarea>
+            <span class="error-msg">A line or two about the project helps.</span>
+          </div>
+          <button class="submit-btn" type="submit">Send enquiry</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-wordmark">Spaces by Nayan</p>
+        <p class="label label--stone" style="margin-top: 0.75rem;">Interior design studio · Mumbai</p>
+      </div>
+      <div class="footer-col">
+        <span class="label label--stone">Contact</span>
+        <a class="u-line" href="mailto:hello@spacesbynayan.com">hello@spacesbynayan.com</a>
+      </div>
+      <div class="footer-col">
+        <span class="label label--stone">Social</span>
+        <a class="u-line" href="https://instagram.com/spacesbynayan" target="_blank" rel="noopener">Instagram — @spacesbynayan</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="label label--stone">© 2026 Spaces by Nayan</span>
+      <button class="label u-line" data-top>Back to top</button>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
