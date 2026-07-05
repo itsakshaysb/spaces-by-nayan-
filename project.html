@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Mumbai Apartment — Spaces by Nayan</title>
-  <meta name="description" content="A full-home apartment interior in Mumbai by Spaces by Nayan — walnut, book-matched marble, fluted glass, and hand-painted murals, room by room.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Hiranandani Estate — Spaces by Nayan</title>
+  <meta name="description" content="A full-home 3 BHK apartment interior at Hiranandani Estate, Thane by Spaces by Nayan — walnut, book-matched marble, fluted glass, and hand-painted murals, room by room.">
   <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=10">
   <script>
     (function () {
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -33,14 +35,17 @@
       <a class="u-line" href="index.html#approach" data-transition>Approach</a>
       <a class="u-line" href="index.html#contact" data-transition>Contact</a>
     </nav>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
   </header>
 
   <main id="main">
 
     <!-- Project hero -->
     <section class="project-hero container">
-      <h1 class="project-title" data-split>A Mumbai Apartment</h1>
-      <p class="label project-hero-meta" data-reveal>Apartment · Mumbai</p>
+      <h1 class="project-title" data-split>Hiranandani Estate</h1>
+      <p class="label project-hero-meta" data-reveal>3 BHK Apartment · Thane</p>
       <figure class="frame frame--wide" data-hero-media data-parallax>
         <picture>
           <source type="image/webp"
@@ -55,7 +60,7 @@
 
     <!-- Project intro -->
     <section class="section container">
-      <p class="intro-text" data-split>An apartment in Mumbai, reworked around light and a warm, natural material palette.</p>
+      <p class="intro-text" data-split>A 3 BHK apartment at Hiranandani Estate, Thane, reworked around light and a warm, natural material palette.</p>
       <p class="measure" style="margin-top: 1.75rem; color: var(--ink-soft);" data-reveal>The brief was calm — a home that feels unhurried, where the materials do the talking and nothing competes for attention. Walnut, book-matched marble, and fluted glass carry the spaces; hand-painted murals give each bedroom its own quiet character.</p>
     </section>
 
@@ -64,11 +69,11 @@
       <div class="facts" data-reveal>
         <div class="fact">
           <span class="label label--stone">Type</span>
-          <span>Apartment</span>
+          <span>3 BHK Apartment</span>
         </div>
         <div class="fact">
           <span class="label label--stone">Location</span>
-          <span>Mumbai</span>
+          <span>Thane</span>
         </div>
         <div class="fact">
           <span class="label label--stone">Scope</span>
@@ -362,10 +367,10 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/split-type.min.js"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>

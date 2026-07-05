@@ -1,18 +1,12 @@
 /* ============================================================
    Spaces by Nayan — main.js
    Loader · Lenis · reveals · parallax · room index · cursor ·
-   page transitions · contact form
+   page transitions
    All motion is gated behind prefers-reduced-motion.
    ============================================================ */
 
 (function () {
   'use strict';
-
-  // Set FORM_ENDPOINT to a real Formspree endpoint, e.g.
-  // 'https://formspree.io/f/abcdwxyz'. Until then the form
-  // falls back to opening the visitor's mail client.
-  var FORM_ENDPOINT = '';
-  var CONTACT_EMAIL = 'hello@spacesbynayan.com';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var motionOK = !reduceMotion &&
@@ -23,56 +17,81 @@
     document.documentElement.classList.remove('js-motion', 'is-loading');
   }
 
-  /* ---------- Contact form (always active) ---------- */
-  var form = document.querySelector('.contact-form');
-  if (form) {
-    var statusEl = form.querySelector('.form-status');
+  /* ---------- Mobile nav (hamburger) ---------- */
+  var navEl = document.querySelector('.nav');
+  var navToggle = document.querySelector('.nav-toggle');
+  if (navEl && navToggle) {
+    var setNavOpen = function (open) {
+      navEl.classList.toggle('is-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    navToggle.addEventListener('click', function () {
+      setNavOpen(!navEl.classList.contains('is-open'));
+    });
+    navEl.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () { setNavOpen(false); });
+    });
+  }
 
-    var validate = function () {
-      var ok = true;
-      form.querySelectorAll('.field').forEach(function (field) {
-        var input = field.querySelector('input, select, textarea');
-        var valid = input.checkValidity() && input.value.trim() !== '';
-        field.classList.toggle('is-invalid', !valid);
-        if (!valid) ok = false;
+  /* ---------- Hero slideshow (independent of GSAP) ---------- */
+  var slideshowFrame = document.querySelector('[data-slideshow]');
+  if (slideshowFrame) {
+    var slides = Array.prototype.slice.call(slideshowFrame.querySelectorAll('picture'));
+    var slideCaption = slideshowFrame.querySelector('.frame-caption');
+    var slideIndex = 0;
+    var syncCaption = function () {
+      var name = slides[slideIndex].getAttribute('data-project');
+      if (slideCaption && name) slideCaption.textContent = name;
+    };
+    syncCaption();
+    if (slides.length > 1 && !reduceMotion) {
+      setInterval(function () {
+        slides[slideIndex].classList.remove('is-active');
+        slideIndex = (slideIndex + 1) % slides.length;
+        slides[slideIndex].classList.add('is-active');
+        syncCaption();
+      }, 2800); // 0.8s crossfade + 2s fully visible
+    }
+  }
+
+  /* ---------- Selected work slider ---------- */
+  var workSlider = document.querySelector('[data-work-slider]');
+  if (workSlider) {
+    var teasers = Array.prototype.slice.call(workSlider.querySelectorAll('.teaser'));
+    var workCounter = document.querySelector('[data-work-counter]');
+    var workIndex = 0;
+    var pad2 = function (n) { return (n < 10 ? '0' : '') + n; };
+
+    var showTeaser = function (i) {
+      teasers[workIndex].classList.remove('is-current');
+      workIndex = (i + teasers.length) % teasers.length;
+      var teaser = teasers[workIndex];
+      teaser.classList.add('is-current');
+      // force-reveal content that scroll animations would otherwise keep hidden
+      teaser.querySelectorAll('[data-reveal]').forEach(function (el) {
+        el.classList.add('is-revealed');
+        el.style.visibility = 'visible';
+        el.style.opacity = '1';
+        el.style.transform = 'none';
       });
-      return ok;
+      teaser.querySelectorAll('.line').forEach(function (line) {
+        line.style.transform = 'none';
+      });
+      var frame = teaser.querySelector('.frame');
+      if (frame) frame.style.clipPath = 'none';
+      if (workCounter) {
+        workCounter.textContent = pad2(workIndex + 1) + ' / ' + pad2(teasers.length);
+      }
     };
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!validate()) return;
-
-      var data = new FormData(form);
-
-      if (FORM_ENDPOINT) {
-        statusEl.textContent = 'Sending…';
-        fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' }
-        }).then(function (res) {
-          if (res.ok) {
-            form.reset();
-            statusEl.textContent = "Thanks — we'll be in touch shortly.";
-          } else {
-            statusEl.textContent = 'Something went wrong — please email ' + CONTACT_EMAIL + ' instead.';
-          }
-        }).catch(function () {
-          statusEl.textContent = 'Something went wrong — please email ' + CONTACT_EMAIL + ' instead.';
-        });
-      } else {
-        // Stopgap until Formspree is wired: open the mail client pre-filled.
-        var body = 'Name: ' + data.get('name') +
-          '\nEmail: ' + data.get('email') +
-          '\nProject type: ' + data.get('project_type') +
-          '\n\n' + data.get('message');
-        window.location.href = 'mailto:' + CONTACT_EMAIL +
-          '?subject=' + encodeURIComponent('Project enquiry — ' + data.get('name')) +
-          '&body=' + encodeURIComponent(body);
-        statusEl.textContent = "Thanks — we'll be in touch shortly.";
-      }
-    });
+    if (workCounter) {
+      workCounter.textContent = pad2(1) + ' / ' + pad2(teasers.length);
+    }
+    var workPrev = document.querySelector('[data-work-prev]');
+    var workNext = document.querySelector('[data-work-next]');
+    if (workPrev) workPrev.addEventListener('click', function () { showTeaser(workIndex - 1); });
+    if (workNext) workNext.addEventListener('click', function () { showTeaser(workIndex + 1); });
   }
 
   /* ---------- Back to top ---------- */
@@ -170,10 +189,10 @@
       });
     });
 
-    // parallax
+    // parallax (all imgs, so stacked slideshow layers move together)
     document.querySelectorAll('[data-parallax]').forEach(function (frame) {
-      var img = frame.querySelector('img');
-      if (!img) return;
+      var img = frame.querySelectorAll('img');
+      if (!img.length) return;
       gsap.fromTo(img, { yPercent: -6 }, {
         yPercent: 6,
         ease: 'none',
@@ -358,15 +377,18 @@
       window.addEventListener('mousemove', function (e) {
         tx = e.clientX;
         ty = e.clientY;
-      });
+      }, { passive: true });
 
       gsap.ticker.add(function () {
-        cx += (tx - cx) * 0.18;
-        cy += (ty - cy) * 0.18;
-        cursorEl.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+        var dx = tx - cx, dy = ty - cy;
+        if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) return; // idle: skip the write
+        cx += dx * 0.45;
+        cy += dy * 0.45;
+        cursorEl.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0) translate(-50%,-50%)';
       });
 
-      var viewTargets = document.querySelectorAll('[data-cursor="view"], .frame');
+      // only links marked data-cursor="view" — plain image frames aren't clickable
+      var viewTargets = document.querySelectorAll('[data-cursor="view"]');
       viewTargets.forEach(function (t) {
         t.addEventListener('mouseenter', function () { cursorEl.classList.add('is-view'); });
         t.addEventListener('mouseleave', function () { cursorEl.classList.remove('is-view'); });

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Spaces by Nayan — Interior Design Studio, Mumbai</title>
   <meta name="description" content="Mumbai interior design studio. Personal, practical, and timeless interiors, designed around how you live.">
   <link rel="icon" href="assets/favicon/favicon.svg" type="image/svg+xml">
@@ -10,7 +12,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" as="image" type="image/webp"
+    imagesrcset="assets/images/dining-1-800.webp 800w, assets/images/dining-1-1400.webp 1400w, assets/images/dining-1-2000.webp 2000w"
+    imagesizes="100vw">
+  <link rel="stylesheet" href="css/styles.css?v=10">
   <script>
     // Set motion class before paint to avoid flash of hidden content
     (function () {
@@ -48,6 +53,9 @@
       <a class="u-line" href="#approach">Approach</a>
       <a class="u-line" href="#contact">Contact</a>
     </nav>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
   </header>
 
   <main id="main">
@@ -59,16 +67,47 @@
         <p class="label" data-reveal>Interior design studio · Mumbai</p>
         <p class="label label--stone" data-reveal>[&nbsp;Scroll down&nbsp;]</p>
       </div>
-      <figure class="hero-media frame frame--wide" data-hero-media data-parallax>
-        <picture>
+      <a class="hero-media-link" href="project.html" data-transition data-cursor="view" aria-label="View project: Hiranandani Estate">
+      <figure class="hero-media frame frame--wide" data-hero-media data-parallax data-slideshow>
+        <picture class="is-active" data-project="Hiranandani Estate">
+          <source type="image/webp"
+            srcset="assets/images/dining-1-800.webp 800w, assets/images/dining-1-1400.webp 1400w, assets/images/dining-1-2000.webp 2000w"
+            sizes="100vw">
+          <img src="assets/images/dining-1-1400.jpg"
+            alt="Dining room with pedestal table and chandelier"
+            fetchpriority="high">
+        </picture>
+        <picture data-project="Hiranandani Estate">
           <source type="image/webp"
             srcset="assets/images/living-1-800.webp 800w, assets/images/living-1-1400.webp 1400w, assets/images/living-1-2000.webp 2000w"
             sizes="100vw">
           <img src="assets/images/living-1-1400.jpg"
-            alt="Living room with a curved bouclé sofa, striped armchairs, and a round walnut coffee table in soft daylight"
-            fetchpriority="high">
+            alt="Living room with a curved bouclé sofa, striped armchairs, and a round walnut coffee table in soft daylight" loading="lazy">
         </picture>
+        <picture data-project="Hiranandani Estate">
+          <source type="image/webp"
+            srcset="assets/images/living-2-800.webp 800w, assets/images/living-2-1400.webp 1400w, assets/images/living-2-2000.webp 2000w"
+            sizes="100vw">
+          <img src="assets/images/living-2-1400.jpg"
+            alt="Living room in warm daylight with striped armchair and curved sofa" loading="lazy">
+        </picture>
+        <picture data-project="Hiranandani Estate">
+          <source type="image/webp"
+            srcset="assets/images/living-3-800.webp 800w, assets/images/living-3-1400.webp 1400w, assets/images/living-3-2000.webp 2000w"
+            sizes="100vw">
+          <img src="assets/images/living-3-1400.jpg"
+            alt="Living room detail with walnut joinery and soft textiles" loading="lazy">
+        </picture>
+        <picture data-project="Hiranandani Estate">
+          <source type="image/webp"
+            srcset="assets/images/living-4-800.webp 800w, assets/images/living-4-1400.webp 1400w, assets/images/living-4-2000.webp 2000w"
+            sizes="100vw">
+          <img src="assets/images/living-4-1400.jpg"
+            alt="Living room corner with layered natural materials" loading="lazy">
+        </picture>
+        <figcaption class="frame-caption">Hiranandani Estate</figcaption>
       </figure>
+      </a>
     </section>
 
     <!-- Intro -->
@@ -141,24 +180,34 @@
         <span class="label eyebrow-num">03</span>
         <span class="label">Selected work</span>
       </div>
-      <div class="teaser">
-        <a class="teaser-media" href="project.html" data-cursor="view" data-transition aria-label="View project: A Mumbai Apartment">
-          <figure class="frame frame--tall">
-            <picture>
-              <source type="image/webp"
-                srcset="assets/images/dining-3-800.webp 800w, assets/images/dining-3-1400.webp 1400w, assets/images/dining-3-2000.webp 2000w"
-                sizes="(max-width: 900px) 100vw, 50vw">
-              <img src="assets/images/dining-3-1400.jpg"
-                alt="Dining room seen through open fluted-glass pocket doors, pedestal table and chandelier beyond"
-                loading="lazy">
-            </picture>
-          </figure>
-        </a>
-        <div>
-          <p class="label label--stone" data-reveal>[ 01 ]</p>
-          <h2 class="teaser-title" data-split>A Mumbai Apartment</h2>
-          <p class="label" data-reveal>Apartment · Mumbai</p>
-          <a class="teaser-link u-line" href="project.html" data-transition data-reveal>View project →</a>
+      <div class="work-slider" data-work-slider>
+        <!-- To add a project: duplicate this .teaser block (without is-current) and update the image, name, meta, and link. -->
+        <div class="teaser is-current">
+          <a class="teaser-media" href="project.html" data-cursor="view" data-transition aria-label="View project: Hiranandani Estate">
+            <figure class="frame frame--tall">
+              <picture>
+                <source type="image/webp"
+                  srcset="assets/images/dining-3-800.webp 800w, assets/images/dining-3-1400.webp 1400w, assets/images/dining-3-2000.webp 2000w"
+                  sizes="(max-width: 900px) 100vw, 50vw">
+                <img src="assets/images/dining-3-1400.jpg"
+                  alt="Dining room seen through open fluted-glass pocket doors, pedestal table and chandelier beyond"
+                  loading="lazy">
+              </picture>
+            </figure>
+          </a>
+          <div>
+            <p class="label label--stone" data-reveal>[ 01 ]</p>
+            <h2 class="teaser-title" data-split>Hiranandani Estate</h2>
+            <p class="label" data-reveal>3 BHK Apartment · Thane</p>
+            <a class="teaser-link u-line" href="project.html" data-transition data-reveal>View project →</a>
+          </div>
+        </div>
+      </div>
+      <div class="work-nav" data-reveal>
+        <span class="label label--stone" data-work-counter>01 / 01</span>
+        <div class="work-arrows">
+          <button class="work-arrow" data-work-prev aria-label="Previous project">←</button>
+          <button class="work-arrow" data-work-next aria-label="Next project">→</button>
         </div>
       </div>
     </section>
@@ -172,43 +221,25 @@
       <div class="contact-grid">
         <div>
           <h2 class="contact-heading" data-split>Have a space in&nbsp;mind?</h2>
-          <p class="contact-sub" data-reveal>Tell us a little about the project and we'll be in touch.</p>
+          <p class="contact-sub" data-reveal>Call or write — tell us a little about the project and we'll be in touch.</p>
           <div class="contact-aside" data-reveal>
-            <a class="u-line" href="mailto:hello@spacesbynayan.com">hello@spacesbynayan.com</a>
-            <a class="u-line" href="https://instagram.com/spacesbynayan" target="_blank" rel="noopener">@spacesbynayan</a>
             <p class="label label--stone">Working across Mumbai</p>
           </div>
         </div>
-        <form class="contact-form" novalidate data-reveal>
-          <div class="field">
-            <label for="f-name">Name</label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-            <span class="error-msg">Please add your name.</span>
+        <div class="contact-details" data-reveal>
+          <div class="contact-item">
+            <span class="label label--stone">Phone</span>
+            <a class="u-line contact-value" href="tel:+918928071128">+91 89280 71128</a>
           </div>
-          <div class="field">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-            <span class="error-msg">Please add a valid email so we can reply.</span>
+          <div class="contact-item">
+            <span class="label label--stone">Email</span>
+            <a class="u-line contact-value" href="mailto:hello@spacesbynayan.com">hello@spacesbynayan.com</a>
           </div>
-          <div class="field">
-            <label for="f-type">Project type</label>
-            <select id="f-type" name="project_type" required>
-              <option value="" selected>Select…</option>
-              <option>Home</option>
-              <option>Apartment</option>
-              <option>Commercial</option>
-              <option>Other</option>
-            </select>
-            <span class="error-msg">Please choose a project type.</span>
+          <div class="contact-item">
+            <span class="label label--stone">Instagram</span>
+            <a class="u-line contact-value" href="https://instagram.com/spacesbynayan" target="_blank" rel="noopener">@spacesbynayan</a>
           </div>
-          <div class="field">
-            <label for="f-message">Message</label>
-            <textarea id="f-message" name="message" required></textarea>
-            <span class="error-msg">A line or two about the project helps.</span>
-          </div>
-          <button class="submit-btn" type="submit">Send enquiry</button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
+        </div>
       </div>
     </section>
   </main>
@@ -222,6 +253,7 @@
       </div>
       <div class="footer-col">
         <span class="label label--stone">Contact</span>
+        <a class="u-line" href="tel:+918928071128">+91 89280 71128</a>
         <a class="u-line" href="mailto:hello@spacesbynayan.com">hello@spacesbynayan.com</a>
       </div>
       <div class="footer-col">
@@ -235,10 +267,10 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/split-type.min.js"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
