@@ -12,7 +12,7 @@
 ## 0. Locked decisions & fill-in checklist
 
 **Locked:**
-- Brand: **Spaces by Nayan** · Designer: **Nayan** · Based in **Mumbai**
+- Brand: **Spaces by Nayan** · Designer: **Nayan** · Based in **Thane**
 - Structure: **two pages** — Home + Project page
 - Motion: **full treatment** (preloader, smooth scroll, masked reveals, parallax, custom cursor, page transitions)
 - Contact = section on Home + footer (no separate page). Mission = "Approach" section on Home.
@@ -27,8 +27,8 @@
 | `{{THESIS_LINE}}` | Option 3: *Interiors shaped by how you live — intimate, practical, timeless.* | ☑ |
 | ~~`{{ABOUT}}` / ethos~~ | ✅ Written from Nayan's words (§7.1) | ☑ |
 | Voice | **Studio voice** ("Spaces by Nayan designs…", "we") | ☑ |
-| `{{PROJECT_TITLE}}` | **"A Mumbai Apartment"** — client stays anonymous (family name "Kandhari's" appears on the entrance sign; do **not** publish it) | ☑ |
-| `{{PROJECT_TYPE}}` / `{{LOCATION}}` | Apartment · Mumbai | ☑ |
+| `{{PROJECT_TITLE}}` | **"A Thane Apartment"** — client stays anonymous (family name "Kandhari's" appears on the entrance sign; do **not** publish it) | ☑ |
+| `{{PROJECT_TYPE}}` / `{{LOCATION}}` | Apartment · Thane | ☑ |
 | Room list | 6 rooms, see §0.1 photo map | ☑ |
 | Image files | Optimized to `assets/images/` — WebP 800/1400/2000w + JPG 1400w fallback | ☑ |
 | Hosting | **Decide later.** Form built Formspree-style so it works on any host; pick host at Phase 9 | ☑ |
@@ -216,8 +216,8 @@ Restrained and orchestrated — this is the reference feel. **All motion gated b
 
 ### 7.0 Global
 
-**`<title>` (Home):** Spaces by Nayan — Interior Design Studio, Mumbai
-**Meta description:** Mumbai interior design studio. Personal, practical, and timeless interiors, designed around how you live.
+**`<title>` (Home):** Spaces by Nayan — Interior Design Studio, Thane
+**Meta description:** Thane interior design studio. Personal, practical, and timeless interiors, designed around how you live.
 
 **Preloader:** `Spaces by Nayan` + counter `00–100`
 
@@ -228,7 +228,7 @@ Restrained and orchestrated — this is the reference feel. **All motion gated b
 **Footer (both pages):**
 ```
 Spaces by Nayan
-Interior design studio · Mumbai
+Interior design studio · Thane
 
 {{EMAIL}}
 Instagram — @spacesbynayan
@@ -244,10 +244,10 @@ Instagram — @spacesbynayan
   1. *Personal, intimate spaces — practical, comfortable, and made to last.*
   2. *Spaces designed around you, built to feel timeless.*
   3. *Interiors shaped by how you live — intimate, practical, timeless.*
-- Small stamp under it: `INTERIOR DESIGN STUDIO · MUMBAI`
+- Small stamp under it: `INTERIOR DESIGN STUDIO · THANE`
 
 **Intro** (grounded in Nayan's ethos)
-> Spaces by Nayan is a Mumbai interior design studio. Every space is designed around the person who lives in it — personal and intimate, shaped by the way you actually use a home. The result is practical and comfortable to live in, and quietly timeless: interiors that feel right on the first day and still feel right years later.
+> Spaces by Nayan is a Thane interior design studio. Every space is designed around the person who lives in it — personal and intimate, shaped by the way you actually use a home. The result is practical and comfortable to live in, and quietly timeless: interiors that feel right on the first day and still feel right years later.
 
 **Approach** (ethos / mission — Nayan's own point of view)
 - Eyebrow: `APPROACH`
@@ -283,7 +283,7 @@ Instagram — @spacesbynayan
 - Form fields: `Name` · `Email` · `Project type` (Home / Apartment / Commercial / Other) · `Message`
 - Button: `Send enquiry`
 - Success message: *Thanks — we'll be in touch shortly.*
-- Beside the form: `{{EMAIL}}` · `@spacesbynayan` · `Working across Mumbai`
+- Beside the form: `{{EMAIL}}` · `@spacesbynayan` · `Working across Thane`
 
 ### 7.2 Project page (`project.html`)
 
@@ -432,4 +432,4 @@ Build and commit one phase at a time; each should render and be reviewable on it
 ---
 
 ### One-line brief for Claude Code
-> Build a two-page, near-monochrome editorial portfolio for **Spaces by Nayan** (Mumbai interior design studio) in the quiet-luxury studio style (ref: telhaclarke.com.au): a Home page that sells the studio and a Project page presenting one flagship project as a scroll-linked, room-by-room walkthrough. Vanilla HTML/CSS/JS + Lenis + GSAP/ScrollTrigger + SplitType, Fraunces + Inter, warm-plaster palette with color only from photographs. Full motion treatment (preloader, masked reveals, parallax, custom cursor, page transitions). Optimize images per §8. Follow the phases in §9. All copy is in §7 — draft, to be refined.
+> Build a two-page, near-monochrome editorial portfolio for **Spaces by Nayan** (Thane interior design studio) in the quiet-luxury studio style (ref: telhaclarke.com.au): a Home page that sells the studio and a Project page presenting one flagship project as a scroll-linked, room-by-room walkthrough. Vanilla HTML/CSS/JS + Lenis + GSAP/ScrollTrigger + SplitType, Fraunces + Inter, warm-plaster palette with color only from photographs. Full motion treatment (preloader, masked reveals, parallax, custom cursor, page transitions). Optimize images per §8. Follow the phases in §9. All copy is in §7 — draft, to be refined.

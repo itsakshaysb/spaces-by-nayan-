@@ -1,6 +1,6 @@
 # Spaces by Nayan — Portfolio
 
-Two-page, image-forward portfolio for **Spaces by Nayan**, a Mumbai interior
+Two-page, image-forward portfolio for **Spaces by Nayan**, a Thane interior
 design studio. Static HTML/CSS/vanilla JS with Lenis + GSAP/ScrollTrigger +
 SplitType (all via CDN — no build step). See `DESIGN.md` for the full spec
 and locked decisions.
@@ -17,7 +17,7 @@ Then open the printed URL (usually http://localhost:3000).
 ## Pages
 
 - `index.html` — Home: hero, intro, approach, services, featured project, contact
-- `project.html` — Flagship project: "A Mumbai Apartment", six-room walkthrough
+- `project.html` — Flagship project: "A Thane Apartment", six-room walkthrough
   with a scroll-linked room index (desktop)
 
 ## Before going live — fill these in
