@@ -1,0 +1,6 @@
+# Cloudflare Pages (free). Deploy with:
+#   bash scripts/package-site.sh
+#   npx wrangler pages deploy dist --project-name=spaces-by-nayan
+name = "spaces-by-nayan"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-09-06"

@@ -37,11 +37,42 @@ in `drive-download-*/` which is gitignored. The entrance photos (DSC07443-*)
 are deliberately unused — the client's family name is visible on the door sign
 and the project is published anonymously.
 
-## Deploy
+## Deploy — `spacesbynayan.com` (free hosting)
 
-Any static host works: GitHub Pages, Netlify, or Vercel — no server code.
-If GitHub Pages is chosen, pair the contact form with Formspree (Netlify Forms
-only works on Netlify).
+You already own **spacesbynayan.com**. Nameservers are Google; **email already
+works** (`MX` → `smtp.google.com`). The web records currently point at
+**Squarespace**. Hosting this HTML site can be **$0**; you only keep paying for
+the domain + Google Workspace. Do not use Google Sites or GitHub Pages.
+
+```bash
+bash scripts/package-site.sh
+```
+
+That writes `dist/` (`index.html`, `project.html`, `css/`, `js/`, `assets/`).
+Do not upload `DESIGN.md`, `README.md`, or `Nayan/`.
+
+**Recommended free host — Cloudflare Pages** (custom domain + HTTPS, enough
+bandwidth for photos; no GitHub connection):
+
+1. Sign up at [dash.cloudflare.com](https://dash.cloudflare.com) (free plan).
+2. Workers & Pages → Create → **Upload assets** → drop the `dist/` folder.
+3. Custom domains → add `www.spacesbynayan.com` and `spacesbynayan.com`.
+4. In Google/Squarespace DNS for this domain, **change only the website
+   records**. Cloudflare will show the exact values. Typical pattern:
+   - **Leave MX** `smtp.google.com` (Workspace email).
+   - **Leave TXT** SPF `v=spf1 include:_spf.google.com ~all`.
+   - **Replace** the Squarespace `www` CNAME (`ext-sq.squarespace.com`) with
+     the CNAME Cloudflare gives you (`….pages.dev`).
+   - **Replace** the Squarespace A records on `@` with Cloudflare’s A/AAAA
+     (or CNAME flattening) for the apex.
+5. Wait for HTTPS. Then unpublish GitHub Pages so github.io is gone.
+
+**Also free — Netlify Drop:** [app.netlify.com/drop](https://app.netlify.com/drop)
+→ drag `dist/` → Domain management → `spacesbynayan.com`. Same DNS rule: only
+swap Squarespace web records; do not touch MX.
+
+**Skip Firebase’s free Spark plan** for this site. Photo pages can exceed the
+~360 MB/day cap. Cloudflare or Netlify free tiers are the right fit.
 
 ## Accessibility & motion
 

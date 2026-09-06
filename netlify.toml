@@ -1,0 +1,14 @@
+# Public host: Netlify. Do not connect the GitHub repo.
+# Drag-and-drop: upload the dist/ folder from scripts/package-site.sh
+# CLI: netlify deploy --prod --dir=dist
+
+[build]
+  command = "bash scripts/package-site.sh"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
