@@ -37,11 +37,39 @@ in `drive-download-*/` which is gitignored. The entrance photos (DSC07443-*)
 are deliberately unused — the client's family name is visible on the door sign
 and the project is published anonymously.
 
-## Deploy
+## Deploy (no GitHub Pages)
 
-Any static host works: GitHub Pages, Netlify, or Vercel — no server code.
-If GitHub Pages is chosen, pair the contact form with Formspree (Netlify Forms
-only works on Netlify).
+The live site should **not** be served from github.io. Package only the public
+files, then upload that folder to a host. Keep Google Workspace for email.
+
+```bash
+bash scripts/package-site.sh
+```
+
+That writes `dist/` (`index.html`, `project.html`, `css/`, `js/`, `assets/`).
+Do not upload `DESIGN.md`, `README.md`, or `Nayan/`.
+
+**Recommended — Netlify Drop (no GitHub connection):**
+
+1. Open [app.netlify.com/drop](https://app.netlify.com/drop) and sign in.
+2. Drag the `dist/` folder onto the page.
+3. Site settings → Domain management → add `www.spacesbynayan.com` (or your domain).
+4. At your DNS (same place as Google Workspace):
+   - Leave **MX** records on Google (email).
+   - **CNAME** `www` → the Netlify hostname (e.g. `something.netlify.app`).
+   - Follow Netlify’s instructions for the bare domain (`spacesbynayan.com`).
+5. In GitHub: Settings → Pages → **Unpublish** so `*.github.io` goes away.
+
+**Google alternative — Firebase Hosting:**
+
+```bash
+bash scripts/package-site.sh
+npx firebase-tools login
+npx firebase-tools hosting:sites:create spaces-by-nayan
+npx firebase-tools deploy --only hosting
+```
+
+Then attach the same custom domain in the Firebase console. Workspace email MX records stay as they are.
 
 ## Accessibility & motion
 
