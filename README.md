@@ -37,10 +37,12 @@ in `drive-download-*/` which is gitignored. The entrance photos (DSC07443-*)
 are deliberately unused — the client's family name is visible on the door sign
 and the project is published anonymously.
 
-## Deploy (no GitHub Pages)
+## Deploy — `spacesbynayan.com` (free hosting)
 
-The live site should **not** be served from github.io. Package only the public
-files, then upload that folder to a host. Keep Google Workspace for email.
+You already own **spacesbynayan.com**. Nameservers are Google; **email already
+works** (`MX` → `smtp.google.com`). The web records currently point at
+**Squarespace**. Hosting this HTML site can be **$0**; you only keep paying for
+the domain + Google Workspace. Do not use Google Sites or GitHub Pages.
 
 ```bash
 bash scripts/package-site.sh
@@ -49,27 +51,28 @@ bash scripts/package-site.sh
 That writes `dist/` (`index.html`, `project.html`, `css/`, `js/`, `assets/`).
 Do not upload `DESIGN.md`, `README.md`, or `Nayan/`.
 
-**Recommended — Netlify Drop (no GitHub connection):**
+**Recommended free host — Cloudflare Pages** (custom domain + HTTPS, enough
+bandwidth for photos; no GitHub connection):
 
-1. Open [app.netlify.com/drop](https://app.netlify.com/drop) and sign in.
-2. Drag the `dist/` folder onto the page.
-3. Site settings → Domain management → add `www.spacesbynayan.com` (or your domain).
-4. At your DNS (same place as Google Workspace):
-   - Leave **MX** records on Google (email).
-   - **CNAME** `www` → the Netlify hostname (e.g. `something.netlify.app`).
-   - Follow Netlify’s instructions for the bare domain (`spacesbynayan.com`).
-5. In GitHub: Settings → Pages → **Unpublish** so `*.github.io` goes away.
+1. Sign up at [dash.cloudflare.com](https://dash.cloudflare.com) (free plan).
+2. Workers & Pages → Create → **Upload assets** → drop the `dist/` folder.
+3. Custom domains → add `www.spacesbynayan.com` and `spacesbynayan.com`.
+4. In Google/Squarespace DNS for this domain, **change only the website
+   records**. Cloudflare will show the exact values. Typical pattern:
+   - **Leave MX** `smtp.google.com` (Workspace email).
+   - **Leave TXT** SPF `v=spf1 include:_spf.google.com ~all`.
+   - **Replace** the Squarespace `www` CNAME (`ext-sq.squarespace.com`) with
+     the CNAME Cloudflare gives you (`….pages.dev`).
+   - **Replace** the Squarespace A records on `@` with Cloudflare’s A/AAAA
+     (or CNAME flattening) for the apex.
+5. Wait for HTTPS. Then unpublish GitHub Pages so github.io is gone.
 
-**Google alternative — Firebase Hosting:**
+**Also free — Netlify Drop:** [app.netlify.com/drop](https://app.netlify.com/drop)
+→ drag `dist/` → Domain management → `spacesbynayan.com`. Same DNS rule: only
+swap Squarespace web records; do not touch MX.
 
-```bash
-bash scripts/package-site.sh
-npx firebase-tools login
-npx firebase-tools hosting:sites:create spaces-by-nayan
-npx firebase-tools deploy --only hosting
-```
-
-Then attach the same custom domain in the Firebase console. Workspace email MX records stay as they are.
+**Skip Firebase’s free Spark plan** for this site. Photo pages can exceed the
+~360 MB/day cap. Cloudflare or Netlify free tiers are the right fit.
 
 ## Accessibility & motion
 
